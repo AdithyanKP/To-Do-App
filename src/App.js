@@ -27,17 +27,23 @@ function App() {
         break;
       case 6:
         setDay("Saturday");
+        break;
+      default:
+        console.log("error found");
     }
   }, []);
   const [toDos, setTodos] = useState([]);
   const [toDo, setTodo] = useState("");
   const [day, setDay] = useState("");
+  //Remove Todo
   const deleteTodo = (key) => {
-    console.log(key);
+    console.log(toDos);
+    /*  console.log(key);
     console.log(toDos);
     const allTodo = [...toDos];
     allTodo.splice(key, 1);
-    setTodos(allTodo);
+    setTodos(allTodo); */
+    setTodos(toDos.filter((el) => el.id !== key));
   };
   const addTodo = () => {
     setTodos([...toDos, { id: Date.now(), text: toDo, status: false }]);
@@ -93,7 +99,7 @@ function App() {
                 <i
                   key={index}
                   onClick={() => {
-                    deleteTodo(index);
+                    deleteTodo(value.id);
                   }}
                   className="fas fa-times"
                 ></i>
