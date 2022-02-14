@@ -35,6 +35,7 @@ function App() {
   const [toDos, setTodos] = useState([]);
   const [toDo, setTodo] = useState("");
   const [day, setDay] = useState("");
+
   //Remove Todo
   const deleteTodo = (key) => {
     console.log(toDos);
@@ -74,13 +75,18 @@ function App() {
         {toDos.map((value, index) => {
           return (
             <div className="todo">
-              <div className="left">
+              <div
+                className={
+                  toDos[index].status === true ? "completed" : "notcompleted"
+                }
+              >
                 <input
                   onChange={(e) => {
                     console.log(e.target.checked);
                     console.log(value);
                     setTodos(
                       toDos.filter((value2) => {
+                        console.log(value2);
                         if (value2.id === value.id) {
                           value2.status = e.target.checked;
                         }
