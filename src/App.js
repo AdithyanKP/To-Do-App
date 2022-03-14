@@ -71,6 +71,7 @@ function App() {
         />
         <i onClick={() => addTodo()} className="fas fa-plus"></i>
       </div>
+      <h2 style={{ padding: 8 }}>My Todos</h2>
       <div className="todos">
         {toDos.map((value, index) => {
           return (
