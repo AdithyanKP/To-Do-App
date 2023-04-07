@@ -47,8 +47,14 @@ function App() {
     setTodos(toDos.filter((el) => el.id !== key));
   };
   const addTodo = () => {
-    setTodos([...toDos, { id: Date.now(), text: toDo, status: false }]);
-    resetField();
+    //replacing empty space
+    let result = toDo.replace(/\s/g, "");
+    if (result !== "") {
+      setTodos([...toDos, { id: Date.now(), text: toDo, status: false }]);
+      resetField();
+    } else {
+      alert("please  type something");
+    }
   };
   const resetField = () => {
     setTodo("");
